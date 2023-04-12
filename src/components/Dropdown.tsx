@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import useClickAway from '../hooks/useClickAway'
 
 interface DropdownProps {
   options: string[]
@@ -11,6 +12,10 @@ const Dropdown = ({ options, selectedOption }: DropdownProps) => {
   const dropdownRef = useRef(null)
 
   const filteredOptions = options.filter(option => option !== selected)
+
+  useClickAway(dropdownRef, () => {
+    setIsOpen(false);
+  });
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
