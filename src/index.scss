@@ -1,3 +1,4 @@
+// reset
 * {
   box-sizing: border-box
 }
@@ -17,6 +18,11 @@ h3 {
   color: #194e84;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+}
+
 input {
   height: 40px;
   width: 100%;
@@ -34,7 +40,7 @@ input {
 .app {
   margin: 0 auto;
   max-width: 400px;
-  border: 10px solid #000;
+  border: 5px solid #000;
 }
 
 .wrap {
@@ -59,4 +65,41 @@ input {
 // 리뷰 내역
 .reviewCardsWrap {
   background: #f5f5f5;
+}
+
+// dropdown
+.dropdown {
+  position: relative;
+}
+
+.dropdownSelected {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  padding-left: 10px;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdownMenu {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdownItem {
+  &:not(:first-child) {
+    margin-top: 10px;
+  }
 }
