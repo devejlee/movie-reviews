@@ -87,7 +87,6 @@ input {
 }
 
 .dropdownMenu {
-  padding: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
   position: absolute;
@@ -99,7 +98,10 @@ input {
 }
 
 .dropdownItem {
+  padding: 10px;
   &:not(:first-child) {
     padding-top: 10px;
+    border-top: 1px solid #ddd;
+    width: 100%;
   }
 }
