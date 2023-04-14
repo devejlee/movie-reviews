@@ -24,6 +24,10 @@ export const sortMovies = (source: Movie[]) => {
     return bLevel - aLevel;
   })
 
-
   return sortedData;
+}
+
+export const generateOptions = (num: number) => {
+  const options = Array.from({ length: num }, (_, index) => (index + 1).toString()).reverse();
+  return options;
 }

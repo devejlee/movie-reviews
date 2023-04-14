@@ -26,7 +26,6 @@ const Dropdown = ({ options, selectedOption }: DropdownProps) => {
     setIsOpen(false);
   };
 
-
   return (
     <div className="dropdown" ref={dropdownRef}>
       <div className="dropdownSelected" onClick={handleDropdownClick}>
