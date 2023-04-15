@@ -12,6 +12,7 @@ const App = () => {
   const sortedData = sortMovies(data)
 
   const handleData = (review: Review) => {
+    if (!review.title || !review.comment) return
     setData([...data, {
       id: data.length,
       title: review.title,
