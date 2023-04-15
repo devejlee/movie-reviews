@@ -1,18 +1,14 @@
-import { useState, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 interface TextInputProps {
+  value: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
   placeholderText: string
 }
 
-const TextInput = ({ placeholderText }: TextInputProps) => {
-  const [textValue, setTextValue] = useState('')
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTextValue(e.target.value)
-  }
-
+const TextInput = ({ placeholderText, value, onChange }: TextInputProps) => {
   return (
-    <input placeholder={placeholderText} type="text" value={textValue} onChange={handleChange} />
+    <input placeholder={placeholderText} type="text" value={value} onChange={onChange} />
   )
 }
 
