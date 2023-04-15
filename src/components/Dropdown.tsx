@@ -3,12 +3,12 @@ import useClickAway from '../hooks/useClickAway'
 
 interface DropdownProps {
   options: string[]
-  selectedOption: string
+  selected: string
+  onSelect: (option: string) => void
 }
 
-const Dropdown = ({ options, selectedOption }: DropdownProps) => {
+const Dropdown = ({ options, selected, onSelect }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [selected, setSelected] = useState(selectedOption)
   const dropdownRef = useRef(null)
 
   const filteredOptions = options.filter(option => option !== selected)
@@ -22,7 +22,7 @@ const Dropdown = ({ options, selectedOption }: DropdownProps) => {
   };
 
   const handleOptionClick = (option: string) => {
-    setSelected(option);
+    onSelect(option);
     setIsOpen(false);
   };
 

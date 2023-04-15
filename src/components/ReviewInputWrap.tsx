@@ -6,6 +6,7 @@ import { generateOptions } from '../utils'
 const ReviewInputWrap = () => {
   const [title, setTitle] = useState('')
   const [comment, setComment] = useState('')
+  const [selected, setSelected] = useState('5')
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
@@ -13,6 +14,10 @@ const ReviewInputWrap = () => {
 
   const handleCommentChange = (e: ChangeEvent<HTMLInputElement>) => {
     setComment(e.target.value)
+  }
+
+  const handleSelected = (option: string) => {
+    setSelected(option)
   }
 
   return (
@@ -23,7 +28,7 @@ const ReviewInputWrap = () => {
       <h3>한줄평</h3>
       <TextInput placeholderText='내용을 입력해 주세요' value={comment} onChange={handleCommentChange} />
       <h3>별점</h3>
-      <Dropdown options={generateOptions(5)} selectedOption='5' />
+      <Dropdown options={generateOptions(5)} selected={selected} onSelect={handleSelected} />
       <button className='inputBtn'>등록</button>
     </div>
   )

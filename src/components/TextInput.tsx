@@ -1,9 +1,9 @@
 import { ChangeEvent } from 'react';
 
 interface TextInputProps {
+  placeholderText: string
   value: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
-  placeholderText: string
 }
 
 const TextInput = ({ placeholderText, value, onChange }: TextInputProps) => {
