@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ReviewCardsWrap } from './components/ReviewCardsWrap'
 import { ReviewInputWrap } from './components/ReviewInputWrap'
 import { ReviewSearchWrap } from './components/ReviewSearchWrap'
@@ -13,17 +13,15 @@ const App = () => {
 
   const handleData = (review: Review) => {
     if (!review.title || !review.comment) return
-    setData([...data, {
+    const newData = [...data, {
       id: data.length,
       title: review.title,
       comment: review.comment,
       score: Number(review.selected)
-    }])
+    }]
+    setLocalStorageItem('reviews', newData)
+    setData(newData)
   }
-
-  useEffect(() => {
-    setLocalStorageItem('reviews', data)
-  }, [data])
 
   return (
     <div className='app'>
