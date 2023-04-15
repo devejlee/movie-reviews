@@ -7,7 +7,7 @@ import { Movie, Review } from './types'
 import { getLocalStorageItem, setLocalStorageItem, sortMovies } from './utils'
 
 const App = () => {
-  const reviews = getLocalStorageItem('reviews')
+  const reviews = getLocalStorageItem<Movie[]>('reviews')
   const [data, setData] = useState<Movie[]>(reviews ?? initialData)
   const sortedData = sortMovies(data)
 
@@ -23,10 +23,20 @@ const App = () => {
     setData(newData)
   }
 
+  const handleSearch = (text: string) => {
+    const data = reviews ?? initialData
+    const searchedData = data.filter(movie => {
+      if (movie.title.includes(text)) {
+        return movie
+      }
+    })
+    setData(searchedData)
+  }
+
   return (
     <div className='app'>
       <ReviewInputWrap onSubmit={handleData} />
-      <ReviewSearchWrap />
+      <ReviewSearchWrap onSearch={handleSearch} />
       <ReviewCardsWrap movies={sortedData} />
     </div>
   )

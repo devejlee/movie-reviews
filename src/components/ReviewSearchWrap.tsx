@@ -1,11 +1,16 @@
 import { ChangeEvent, useState } from 'react'
 import { TextInput } from './TextInput'
 
-const ReviewSearchWrap = () => {
+interface ReviewSearchWrapProps {
+  onSearch: (text: string) => void
+}
+
+const ReviewSearchWrap = ({ onSearch }: ReviewSearchWrapProps) => {
   const [search, setSearch] = useState('')
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
+    onSearch(e.target.value)
   }
 
   return (
