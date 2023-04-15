@@ -31,3 +31,12 @@ export const generateOptions = (num: number) => {
   const options = Array.from({ length: num }, (_, index) => (index + 1).toString()).reverse();
   return options;
 }
+
+export const setLocalStorageItem = <T>(key: string, value: T) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
+
+export const getLocalStorageItem = (key: string) => {
+  const value = localStorage.getItem(key);
+  return value ? JSON.parse(value) : null;
+};
