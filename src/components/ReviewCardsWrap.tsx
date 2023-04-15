@@ -1,14 +1,15 @@
 import { ReviewCard } from './ReviewCard'
-import { initialData } from '../data'
-import { sortMovies } from '../utils';
+import { Movie } from '../types'
 
-const sortedData = sortMovies(initialData)
+interface ReviewCardsWrapProps {
+  movies: Movie[]
+}
 
-const ReviewCardsWrap = () => {
+const ReviewCardsWrap = ({ movies }: ReviewCardsWrapProps) => {
   return (
     <div className='wrap reviewCardsWrap'>
       <h2>리뷰 내역</h2>
-      {sortedData.map(movie => {
+      {movies.map(movie => {
         return (
           <ReviewCard key={movie.id} title={movie.title} comment={movie.comment} score={movie.score} />
         )

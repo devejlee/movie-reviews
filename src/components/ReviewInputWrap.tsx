@@ -3,7 +3,11 @@ import { Dropdown } from './Dropdown'
 import { TextInput } from './TextInput'
 import { generateOptions } from '../utils'
 
-const ReviewInputWrap = () => {
+interface ReviewInputWrap {
+  onSubmit: () => void
+}
+
+const ReviewInputWrap = ({ onSubmit }: ReviewInputWrap) => {
   const [title, setTitle] = useState('')
   const [comment, setComment] = useState('')
   const [selected, setSelected] = useState('5')
@@ -29,7 +33,7 @@ const ReviewInputWrap = () => {
       <TextInput placeholderText='내용을 입력해 주세요' value={comment} onChange={handleCommentChange} />
       <h3>별점</h3>
       <Dropdown options={generateOptions(5)} selected={selected} onSelect={handleSelected} />
-      <button className='inputBtn'>등록</button>
+      <button className='inputBtn' onClick={onSubmit}>등록</button>
     </div>
   )
 }

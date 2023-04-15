@@ -1,9 +1,4 @@
-type Movie = {
-  id: number
-  title: string
-  comment: string
-  score: number
-}
+import { Movie } from '../types'
 
 const patternAlphabet = /[a-zA-Z]/
 const patternHangul = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/
