@@ -12,6 +12,7 @@ const ReviewInputWrap = () => {
       <TextInput placeholderText='내용을 입력해 주세요' />
       <h3>별점</h3>
       <Dropdown options={generateOptions(5)} selectedOption='5' />
+      <button className='inputBtn'>등록</button>
     </div>
   )
 }
