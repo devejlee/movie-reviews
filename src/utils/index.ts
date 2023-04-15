@@ -11,6 +11,12 @@ const getPatternIndex = (s: string) => {
 
 export const sortMovies = (source: Movie[]) => {
   const sortedData = [...source].sort((a, b) => {
+    // First, compare scores in descending order
+    if (b.score !== a.score) {
+      return b.score - a.score;
+    }
+    
+    // If scores are the same, then compare titles alphabetically
     const aLevel = getPatternIndex(a.title.charAt(0))
     const bLevel = getPatternIndex(b.title.charAt(0))
     if (aLevel === bLevel) {
