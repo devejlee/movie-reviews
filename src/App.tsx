@@ -26,9 +26,7 @@ const App = () => {
   const handleSearch = (text: string) => {
     const data = reviews ?? initialData
     const searchedData = data.filter(movie => {
-      if (movie.title.includes(text)) {
-        return movie
-      }
+      return movie.title.includes(text);
     })
     setData(searchedData)
   }
