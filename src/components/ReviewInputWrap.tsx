@@ -1,10 +1,11 @@
 import { ChangeEvent, useState } from 'react'
 import { Dropdown } from './Dropdown'
 import { TextInput } from './TextInput'
+import { Review } from '../types'
 import { generateOptions } from '../utils'
 
 interface ReviewInputWrap {
-  onSubmit: () => void
+  onSubmit: ({ title, comment, selected }: Review) => void
 }
 
 const ReviewInputWrap = ({ onSubmit }: ReviewInputWrap) => {
@@ -33,7 +34,7 @@ const ReviewInputWrap = ({ onSubmit }: ReviewInputWrap) => {
       <TextInput placeholderText='내용을 입력해 주세요' value={comment} onChange={handleCommentChange} />
       <h3>별점</h3>
       <Dropdown options={generateOptions(5)} selected={selected} onSelect={handleSelected} />
-      <button className='inputBtn' onClick={() => onSubmit()}>등록</button>
+      <button className='inputBtn' onClick={() => onSubmit({ title, comment, selected })}>등록</button>
     </div>
   )
 }
