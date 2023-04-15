@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ReviewCardsWrap } from './components/ReviewCardsWrap'
 import { ReviewInputWrap } from './components/ReviewInputWrap'
 import { ReviewSearchWrap } from './components/ReviewSearchWrap'
 import { initialData } from './data'
 import { Movie, Review } from './types'
-import { getLocalStorageItem, sortMovies } from './utils'
+import { getLocalStorageItem, setLocalStorageItem, sortMovies } from './utils'
 
 const App = () => {
   const reviews = getLocalStorageItem('reviews')
@@ -20,6 +20,10 @@ const App = () => {
       score: Number(review.selected)
     }])
   }
+
+  useEffect(() => {
+    setLocalStorageItem('reviews', data)
+  }, [data])
 
   return (
     <div className='app'>
