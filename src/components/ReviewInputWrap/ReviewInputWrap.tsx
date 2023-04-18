@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from 'react'
-import { Dropdown } from './Dropdown'
-import { TextInput } from './TextInput'
-import { Review } from '../types'
-import { generateOptions } from '../utils'
+import { Dropdown } from '../Dropdown'
+import { TextInput } from '../TextInput'
+import { Review } from '../../types'
+import { generateOptions } from '../../utils'
+import { Wrap, Button } from './styles'
 
 interface ReviewInputWrap {
   onSubmit: ({ title, comment, selected }: Review) => void
@@ -25,8 +26,9 @@ const ReviewInputWrap = ({ onSubmit }: ReviewInputWrap) => {
     setSelected(option)
   }
 
+
   return (
-    <div className='wrap reviewInputWrap'>
+    <Wrap>
       <h2>New Movie Review</h2>
       <h3>Movie Title</h3>
       <TextInput placeholderText='Title of movie' value={title} onChange={handleTitleChange} />
@@ -34,8 +36,8 @@ const ReviewInputWrap = ({ onSubmit }: ReviewInputWrap) => {
       <TextInput placeholderText='Review of movie' value={comment} onChange={handleCommentChange} />
       <h3>Rating</h3>
       <Dropdown options={generateOptions(5)} selected={selected} onSelect={handleSelected} />
-      <button className='inputBtn' onClick={() => onSubmit({ title, comment, selected })}>등록</button>
-    </div>
+      <Button onClick={() => onSubmit({ title, comment, selected })}>Submit</Button>
+    </Wrap>
   )
 }
 

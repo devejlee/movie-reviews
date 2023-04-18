@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ReviewCardsWrap } from './components/ReviewCardsWrap'
-import { ReviewInputWrap } from './components/ReviewInputWrap'
+import { ReviewInputWrap } from './components/ReviewInputWrap/ReviewInputWrap'
 import { ReviewSearchWrap } from './components/ReviewSearchWrap'
 import { initialData } from './data'
 import { Movie, Review } from './types'

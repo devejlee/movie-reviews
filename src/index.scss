@@ -47,11 +47,6 @@ input {
   padding: 20px;
 }
 
-// 신규 리뷰 등록
-.reviewInputWrap {
-  background: #f5f5f5;
-}
-
 // 리뷰 검색
 .reviewSearchWrap {
   h2 {
@@ -130,20 +125,5 @@ input {
     padding-top: 10px;
     border-top: 1px solid #ddd;
     width: 100%;
-  }
-}
-
-// button
-.inputBtn {
-  width: 100%;
-  height: 40px;
-  margin-top: 20px;
-  background: #194e84;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 15px;
-  border: none;
-  &:hover {
-    cursor: pointer;
   }
 }
