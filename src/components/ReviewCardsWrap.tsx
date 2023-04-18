@@ -8,7 +8,7 @@ interface ReviewCardsWrapProps {
 const ReviewCardsWrap = ({ movies }: ReviewCardsWrapProps) => {
   return (
     <div className='wrap reviewCardsWrap'>
-      <h2>리뷰 내역</h2>
+      <h2>All Reviews</h2>
       {movies.map(movie => {
         return (
           <ReviewCard key={movie.id} title={movie.title} comment={movie.comment} score={movie.score} />

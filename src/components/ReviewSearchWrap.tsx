@@ -15,8 +15,8 @@ const ReviewSearchWrap = ({ onSearch }: ReviewSearchWrapProps) => {
 
   return (
     <div className='wrap reviewSearchWrap'>
-      <h2>리뷰 검색</h2>
-      <TextInput placeholderText='영화 제목을 입력해 주세요' value={search} onChange={handleSearchChange} />
+      <h2>Search</h2>
+      <TextInput placeholderText='Search movie title' value={search} onChange={handleSearchChange} />
     </div>
   )
 }
