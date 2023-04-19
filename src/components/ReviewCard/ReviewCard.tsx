@@ -13,7 +13,7 @@ const ReviewCard = ({ title, comment, score }: ReviewCardProps) => {
       <p>{comment}</p>
       <StyledScoreRow>
         {Array.from({ length: score }, (_, i) => (
-          <StyledCircle key={i} className='circle'></StyledCircle>
+          <StyledCircle key={i} className='circle' data-testid='circle'></StyledCircle>
         ))}
       </StyledScoreRow>
     </StyledReviewCard>
