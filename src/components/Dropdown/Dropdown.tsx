@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
-import useClickAway from '../hooks/useClickAway'
+import useClickAway from '../../hooks/useClickAway'
+import { StyledDropdown, StyledDropdownSelected, StyledDropdownMenu, StyledDropdownItem } from './styles'
 
 interface DropdownProps {
   options: string[]
@@ -27,24 +28,23 @@ const Dropdown = ({ options, selected, onSelect }: DropdownProps) => {
   };
 
   return (
-    <div className="dropdown" ref={dropdownRef}>
-      <div className="dropdownSelected" onClick={handleDropdownClick}>
+    <StyledDropdown ref={dropdownRef}>
+      <StyledDropdownSelected onClick={handleDropdownClick}>
         {selected}
-      </div>
+      </StyledDropdownSelected>
       {isOpen && (
-        <ul className="dropdownMenu">
+        <StyledDropdownMenu>
           {filteredOptions.map((option) => (
-            <li
-              className="dropdownItem"
+            <StyledDropdownItem
               key={option}
               onClick={() => handleOptionClick(option)}
             >
               {option}
-            </li>
+            </StyledDropdownItem>
           ))}
-        </ul>
+        </StyledDropdownMenu>
       )}
-    </div>
+    </StyledDropdown>
   )
 }
 

@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from 'react'
-import { Dropdown } from '../Dropdown'
+import { Wrap, Button } from './styles'
+import { Dropdown } from '../Dropdown/Dropdown'
 import { TextInput } from '../TextInput'
 import { Review } from '../../types'
 import { generateOptions } from '../../utils'
-import { Wrap, Button } from './styles'
 
 interface ReviewInputWrap {
   onSubmit: ({ title, comment, selected }: Review) => void
@@ -25,7 +25,6 @@ const ReviewInputWrap = ({ onSubmit }: ReviewInputWrap) => {
   const handleSelected = (option: string) => {
     setSelected(option)
   }
-
 
   return (
     <Wrap>
