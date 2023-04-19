@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react'
 import { StyledWrap, StyledButton } from './styles'
 import { Dropdown } from '../Dropdown/Dropdown'
-import { TextInput } from '../TextInput'
+import { TextInput } from '../TextInput/TextInput'
 import { Review } from '../../types'
 import { generateOptions } from '../../utils'
 

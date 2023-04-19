@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import { StyledWrap } from './styles'
-import { TextInput } from '../TextInput'
+import { TextInput } from '../TextInput/TextInput'
 
 interface ReviewSearchWrapProps {
   onSearch: (text: string) => void
