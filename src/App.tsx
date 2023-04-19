@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ReviewCardsWrap } from './components/ReviewCardsWrap/ReviewCardsWrap'
 import { ReviewInputWrap } from './components/ReviewInputWrap/ReviewInputWrap'
-import { ReviewSearchWrap } from './components/ReviewSearchWrap'
+import { ReviewSearchWrap } from './components/ReviewSearchWrap/ReviewSearchWrap'
 import { initialData } from './data'
 import { Movie, Review } from './types'
 import { getLocalStorageItem, setLocalStorageItem, sortMovies } from './utils'
