@@ -29,11 +29,11 @@ const Dropdown = ({ options, selected, onSelect }: DropdownProps) => {
 
   return (
     <StyledDropdown ref={dropdownRef}>
-      <StyledDropdownSelected onClick={handleDropdownClick}>
+      <StyledDropdownSelected onClick={handleDropdownClick} data-testid="dropdown-selected">
         {selected}
       </StyledDropdownSelected>
       {isOpen && (
-        <StyledDropdownMenu>
+        <StyledDropdownMenu data-testid="dropdown-menu">
           {filteredOptions.map((option) => (
             <StyledDropdownItem
               key={option}
