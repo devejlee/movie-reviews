@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ReviewCardsWrap } from './components/ReviewCardsWrap'
+import { ReviewCardsWrap } from './components/ReviewCardsWrap/ReviewCardsWrap'
 import { ReviewInputWrap } from './components/ReviewInputWrap/ReviewInputWrap'
 import { ReviewSearchWrap } from './components/ReviewSearchWrap'
 import { initialData } from './data'
