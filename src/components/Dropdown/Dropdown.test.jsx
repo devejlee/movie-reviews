@@ -17,6 +17,6 @@ describe('Dropdown', () => {
     fireEvent.click(getByTestId('dropdown-selected'));
 
     // Check if the dropdown menu is now open
-    expect(() => getByTestId('dropdown-menu')).not.toThrow();
+    expect(getByTestId('dropdown-menu')).toBeInTheDocument();
   });
 });
