@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import { baseStyle } from '../../baseStyles'
 
-export const Wrap = styled.div`
+export const StyledWrap = styled.div`
   ${baseStyle}
   background: #f5f5f5;
 `
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   width: 100%;
   height: 40px;
   margin-top: 20px;

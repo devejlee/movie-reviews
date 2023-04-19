@@ -1,3 +1,5 @@
+import { StyledReviewCard, StyledScoreRow, StyledCircle } from './styles'
+
 interface ReviewCardProps {
   title: string
   comment: string
@@ -6,15 +8,15 @@ interface ReviewCardProps {
 
 const ReviewCard = ({ title, comment, score }: ReviewCardProps) => {
   return (
-    <div className='reviewCard'>
+    <StyledReviewCard>
       <h4>{title}</h4>
       <p>{comment}</p>
-      <div className='scoreRow'>
+      <StyledScoreRow>
         {Array.from({ length: score }, (_, i) => (
-          <div key={i} className='circle'></div>
+          <StyledCircle key={i} className='circle'></StyledCircle>
         ))}
-      </div>
-    </div>
+      </StyledScoreRow>
+    </StyledReviewCard>
   )
 }
 

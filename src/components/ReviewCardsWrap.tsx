@@ -1,4 +1,4 @@
-import { ReviewCard } from './ReviewCard'
+import { ReviewCard } from './ReviewCard/ReviewCard'
 import { Movie } from '../types'
 
 interface ReviewCardsWrapProps {

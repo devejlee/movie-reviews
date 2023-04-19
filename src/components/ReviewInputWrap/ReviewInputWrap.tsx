@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react'
-import { Wrap, Button } from './styles'
+import { StyledWrap, StyledButton } from './styles'
 import { Dropdown } from '../Dropdown/Dropdown'
 import { TextInput } from '../TextInput'
 import { Review } from '../../types'
@@ -27,7 +27,7 @@ const ReviewInputWrap = ({ onSubmit }: ReviewInputWrap) => {
   }
 
   return (
-    <Wrap>
+    <StyledWrap>
       <h2>New Movie Review</h2>
       <h3>Movie Title</h3>
       <TextInput placeholderText='Title of movie' value={title} onChange={handleTitleChange} />
@@ -35,8 +35,8 @@ const ReviewInputWrap = ({ onSubmit }: ReviewInputWrap) => {
       <TextInput placeholderText='Review of movie' value={comment} onChange={handleCommentChange} />
       <h3>Rating</h3>
       <Dropdown options={generateOptions(5)} selected={selected} onSelect={handleSelected} />
-      <Button onClick={() => onSubmit({ title, comment, selected })}>Submit</Button>
-    </Wrap>
+      <StyledButton onClick={() => onSubmit({ title, comment, selected })}>Submit</StyledButton>
+    </StyledWrap>
   )
 }
 
