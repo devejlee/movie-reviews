@@ -12,7 +12,7 @@ const Dropdown = ({ options, selected, onSelect }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
 
-  const filteredOptions = options.filter(option => option !== selected)
+  const filteredOptions = options?.filter(option => option !== selected)
 
   useClickAway(dropdownRef, () => {
     setIsOpen(false);
