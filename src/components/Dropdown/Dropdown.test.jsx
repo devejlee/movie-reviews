@@ -1,11 +1,12 @@
 import { render, fireEvent } from '@testing-library/react';
+import { vi } from 'vitest';
 import { Dropdown } from './Dropdown';
 
 describe('Dropdown', () => {
   test('opens the menu when the selected div is clicked', () => {
     const options = ['Option 1', 'Option 2', 'Option 3'];
     const selected = 'Option 1';
-    const onSelect = () => {};
+    const onSelect = vi.fn();
     const { getByTestId } = render(
       <Dropdown options={options} selected={selected} onSelect={onSelect} />
     );
