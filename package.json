@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cy:open-e2e": "cypress open --e2e --browser chrome"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

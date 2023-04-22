@@ -8,7 +8,7 @@ interface ReviewCardProps {
 
 const ReviewCard = ({ title, comment, score }: ReviewCardProps) => {
   return (
-    <StyledReviewCard>
+    <StyledReviewCard data-testid='review-card'>
       <h4>{title}</h4>
       <p>{comment}</p>
       <StyledScoreRow>

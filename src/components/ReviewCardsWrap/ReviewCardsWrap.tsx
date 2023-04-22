@@ -8,7 +8,7 @@ interface ReviewCardsWrapProps {
 
 const ReviewCardsWrap = ({ movies }: ReviewCardsWrapProps) => {
   return (
-    <StyledWrap>
+    <StyledWrap data-testid='review-card-wrap'>
       <h2>All Reviews</h2>
       {movies.map(movie => {
         return (
