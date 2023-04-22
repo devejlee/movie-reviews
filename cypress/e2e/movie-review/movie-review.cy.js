@@ -1,5 +1,5 @@
 import { initialData } from '../../../src/data'
-import { setLocalStorageItem } from '../../../src/utils';
+import { setLocalStorageItem, sortMovies } from '../../../src/utils';
 
 const LOCAL_STORAGE_KEY = 'movie-reviews';
 const movies = initialData;
@@ -10,7 +10,7 @@ describe('Movie review app', () => {
     cy.visit('/');
   });
 
-  it.only('should add a new movie review', () => {
+  it('should add a new movie review', () => {
     const newMovieTitle = 'The Shawshank Redemption';
     const newMovieComment = 'Classic movie, highly recommended';
     const newMovieScore = '4';
@@ -34,20 +34,36 @@ describe('Movie review app', () => {
     });
   });
   
-  // todo other tests
+  it.only('should sort movies by score and then alphabetically', () => {
+    const sortedMovies = sortMovies(movies)
 
-  it('should sort the movie list by score', () => {
-    cy.contains('Sort by score').click();
+    cy.get('[data-testid="review-card-wrap"]')
+      .children('[data-testid="review-card"]')
+      .each(($el, index) => {
+        const movie = sortedMovies[index]
+        cy.wrap($el).within(() => {
+          cy.get('h4').should('contain', movie.title)
+          cy.get('p').should('contain', movie.comment)
+          cy.get('[data-testid="circle"]').should('have.length', movie.score)
+        })
+      })
 
-    const sortedMovies = [...movies].sort((a, b) => b.score - a.score);
-    cy.get('.movie-card').each(($card, index) => {
-      cy.wrap($card).within(() => {
-        cy.contains(sortedMovies[index].title);
-        cy.contains(sortedMovies[index].comment);
-        cy.contains(sortedMovies[index].score.toString());
-      });
-    });
-  });
+    const compareTitles = (title1, title2) => {
+      return title1.localeCompare(title2) < 0
+    }
+
+    // check if the movies are sorted properly
+    for (let i = 0; i < sortedMovies.length - 1; i++) {
+      const currentMovie = sortedMovies[i]
+      const nextMovie = sortedMovies[i + 1]
+
+      if (nextMovie.score === currentMovie.score) {
+        expect(compareTitles(currentMovie.title, nextMovie.title)).to.be.true
+      } else {
+        expect(nextMovie.score).to.be.lessThan(currentMovie.score)
+      }
+    }
+  })
 
   it('should search for a movie by title', () => {
     const searchTerm = 'Shrek';
