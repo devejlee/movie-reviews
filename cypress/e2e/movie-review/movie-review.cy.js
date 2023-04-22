@@ -32,6 +32,10 @@ describe('Movie review app', () => {
       cy.contains(newMovieComment);
       cy.get('[data-testid="circle"]').should('have.length', newMovieScore);
     });
+     
+    // Check if the new movie review still exists from local storage after page refresh
+    cy.visit('/');
+    cy.get('[data-testid="review-card"]').should('have.length', movies.length + 1);
   });
   
   it.only('should sort movies by score and then alphabetically', () => {
