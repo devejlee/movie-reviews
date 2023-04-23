@@ -20,7 +20,11 @@ export const sortMovies = (source: Movie[]) => {
     const aLevel = getPatternIndex(a.title.charAt(0))
     const bLevel = getPatternIndex(b.title.charAt(0))
     if (aLevel === bLevel) {
-      return a.title.charCodeAt(0) - b.title.charCodeAt(0)
+      const titleA = a.title.toLowerCase();
+      const titleB = b.title.toLowerCase();
+      if (titleA < titleB) return -1;
+      if (titleA > titleB) return 1;
+      return 0;
     }
     return bLevel - aLevel;
   })
