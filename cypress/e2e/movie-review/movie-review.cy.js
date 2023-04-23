@@ -38,7 +38,7 @@ describe('Movie review app', () => {
     cy.get('[data-testid="review-card"]').should('have.length', movies.length + 1);
   });
   
-  it.only('should sort movies by score and then alphabetically', () => {
+  it('should sort movies by score and then alphabetically', () => {
     const sortedMovies = sortMovies(movies)
 
     cy.get('[data-testid="review-card-wrap"]')
@@ -71,19 +71,20 @@ describe('Movie review app', () => {
 
   it('should search for a movie by title', () => {
     const searchTerm = 'Shrek';
-    const filteredMovies = movies.filter((movie) =>
+    const sortedMovies = sortMovies(movies)
+    const filteredMovies = sortedMovies.filter((movie) =>
       movie.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     cy.get('input[placeholder="Search movie title"]').type(searchTerm);
 
-    cy.get('.movie-card')
+    cy.get('[data-testid="review-card"]')
       .should('have.length', filteredMovies.length)
       .each(($card, index) => {
         cy.wrap($card).within(() => {
           cy.contains(filteredMovies[index].title);
           cy.contains(filteredMovies[index].comment);
-          cy.contains(filteredMovies[index].score.toString());
+          cy.get('[data-testid="circle"]').should('have.length', filteredMovies[index].score)
         });
       });
   });
