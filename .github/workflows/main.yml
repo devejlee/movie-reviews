@@ -3,7 +3,7 @@ name: Cypress and Jest Tests
 on: [push, pull_request]
 
 jobs:
-  cypress-run:
+  tests-run:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
