@@ -1,6 +1,6 @@
-name: Cypress Tests
+name: Cypress and Jest Tests
 
-on: push
+on: [push, pull_request]
 
 jobs:
   cypress-run:
@@ -16,3 +16,6 @@ jobs:
           config: baseUrl=http://localhost:4173
           build: npm run build
           start: npm run preview
+      # run Jest tests
+      - name: Jest run
+        run: npm run test
