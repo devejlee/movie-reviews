@@ -1,34 +1,38 @@
-import { createMachine } from 'xstate'
-export const todosMachine = createMachine({
-  /** @xstate-layout N4IgpgJg5mDOIC5QAkD2A3MAnABAWwEMBjACwEsA7MAOgBlUCJKocAVVCVWAYnc9hz1GkANoAGALqJQABy5kALmVQVpIAB6IALACZqOsQGYAHADZDWgIxiArMYCclmwBoQAT0QBaHVuqWdNpZaxjr2hmJaYVoAvtGuaJi4hKSUNEJMFCx8XNzpzDgKHFw4AGYEZAA2opJqcrCKyqpIGl4+ejomxoY2hhYA7ANdrh4Ihn1+lvamWqY2Wr1aNgGxcSAUHHBqCdj4xORUtfJKKmqaCN72Yvqd3QsDfUPuXpb+1MaR1vY6DtbfxrHxDA7ZL7NIMDJZIrwZp1BonZpnTz+do3Hr9QaGYatGzUQymez2eb+QnzL42AEgbZJPapajZATpSCHerHJqgM4hXFaD72PpiYmGfxYhAvcYGOzGd4WezGPrk1ZU3YpKh0cH5Qr8HDYLCoLBMmFHRqnZ46FGS27oh6Yp4IAKWaj4uYEvqGKb2OYxFZAA */
-  id: "Hover machine",
+import { createMachine } from "xstate";
 
-  states: {
-    "Loading Todos": {
-      on: {
-        "Todos loaded": {
-          target: "Todos Loaded",
-          actions: 'consoleLogTodos'
-        },
-        "Loading todos failed": {
-          target: "Loading todos errored"
-        }
-      }
+export const todosMachine =
+  /** @xstate-layout N4IgpgJg5mDOIC5QBUD2FUAIC2BDAxgBYCWAdmAHQAyquEZUmaGsAxBuRWQG6oDWlZljxEylGnQZN0qWAh6p8uAC7FUpANoAGALradiUAAdZxVesMgAHogC0AZgCsFAGwBOAEwAWABxOPbm729m6OADQgAJ6Ijm4UXo6OAOweLi4eTk4AjI4uAL55EUI4BCScEvSkjEJsYABOdah1FEYANioAZk3YFMUiZeK0ldUycgpK5pq6+pYmsGZqpJY2CA7O7t5+jgFBIeFRiFlZPhRuRwn23kla1-ZZBYUgpOhwln2lYrOmk8t29kknXxeLJeLRabw3LwuCLRVYZLKuLQ+LIeRxeAJJew+bwFIoyEqicpDKQ1L7zH5Iax-exaeI+YGg8GgpJQmF2EFeCgonyhRxaPnojxJJK4kDvQmCUaYCqQMkLCyUla2DweCgqtKeZFuLRHXJs1YouJnLS+Fz2LxJZJaLGi8UDajEqqYZRS+qNOqyylzeVLRWIFIULFIlxgpJuPxgtz62xpQNacNZFyOeloi1uB55IA */
+  createMachine({
+    tsTypes: {} as import("./todoAppMachine.typegen").Typegen0,
+    schema: {
+      // events: {} as
+      //   | { type: "Todos loaded"; todos: string[] }
+      //   | { type: "Loading todos failed"; errorMessage: string },
+      services: {} as {
+        loadTodos: {
+          data: string[];
+        };
+      },
     },
-
-    "Todos Loaded": {},
-    "Loading todos errored": {}
-  },
-
-  initial: "Loading Todos",
-  schema: {
-    events: {} as { type: 'Todos loaded'; todos: string[] } | { type: 'Loading todos failed'; errorMessage: string }
-  },
-  tsTypes: {} as import('./todoAppMachine.typegen').Typegen0
-}, {
-  actions: {
-    consoleLogTodos: (context, event) => {
-      alert(JSON.stringify(event.todos))
-    }
-  }
-})
+    id: "Todo machine",
+    initial: "Loading Todos",
+    states: {
+      "Loading Todos": {
+        invoke: {
+          src: "loadTodos",
+          onDone: [
+            {
+              target: "Todos Loaded",
+            },
+          ],
+          onError: [
+            {
+              target: "Loading todos errored",
+            },
+          ],
+        },
+      },
+      "Todos Loaded": {},
+      "Loading todos errored": {},
+    },
+  });
