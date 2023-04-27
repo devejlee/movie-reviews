@@ -6,8 +6,13 @@ export const todosMachine = createMachine({
   states: {
     "Loading Todos": {
       on: {
-        "Todos loaded": "Todos Loaded",
-        "Loading todos failed": "Loading todos errored"
+        "Todos loaded": {
+          target: "Todos Loaded",
+          actions: 'consoleLogTodos'
+        },
+        "Loading todos failed": {
+          target: "Loading todos errored"
+        }
       }
     },
 
@@ -15,5 +20,15 @@ export const todosMachine = createMachine({
     "Loading todos errored": {}
   },
 
-  initial: "Loading Todos"
+  initial: "Loading Todos",
+  schema: {
+    events: {} as { type: 'Todos loaded'; todos: string[] } | { type: 'Loading todos failed'; errorMessage: string }
+  },
+  tsTypes: {} as import('./todoAppMachine.typegen').Typegen0
+}, {
+  actions: {
+    consoleLogTodos: (context, event) => {
+      alert(JSON.stringify(event.todos))
+    }
+  }
 })

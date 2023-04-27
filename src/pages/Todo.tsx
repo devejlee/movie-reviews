@@ -7,10 +7,16 @@ const Todo = () => {
   return (
     <div>{JSON.stringify(state.value)}
       <button onClick={() => {
-        send('Todos loaded')
+        send({
+          type: 'Todos loaded',
+          todos: ['Take bins out']
+        })
       }}>Todos Loaded</button>
       <button onClick={() => {
-        send('Loading todos failed')
+        send({
+          type: 'Loading todos failed',
+          errorMessage: 'Oh no!'
+        })
       }}>Loading todos failed</button>
     </div>
   )
