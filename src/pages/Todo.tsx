@@ -11,6 +11,9 @@ const Todo = () => {
       },
       saveTodo: async (context, event) => {
         todos.add(context.createNewTodoFormInput)
+      },
+      deleteTodo: async (context, event) => {
+        todos.delete(event.todo)
       }
     }
   })
@@ -20,6 +23,27 @@ const Todo = () => {
       <pre>{JSON.stringify(state.value)}</pre>
       <pre>{JSON.stringify(state.context)}</pre>
       <div>
+        {state.context.todos.map((todo) => (
+          <div
+            key={todo}
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <p>{todo}</p>
+            <button
+              onClick={() => {
+                send({
+                  type: "Delete",
+                  todo,
+                });
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
         {state.matches('Todos Loaded') && <button onClick={() => { send({ type: 'Create new' }) }}>Click</button>}
         {state.matches('Creating New Todo.Showing form input') &&
           <form onSubmit={(e) => {
