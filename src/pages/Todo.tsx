@@ -11,19 +11,9 @@ const Todo = () => {
   })
 
   return (
-    <div>{JSON.stringify(state.value)}
-      <button onClick={() => {
-        send({
-          type: 'Todos loaded',
-          todos: ['Take bins out']
-        })
-      }}>Todos Loaded</button>
-      <button onClick={() => {
-        send({
-          type: 'Loading todos failed',
-          errorMessage: 'Oh no!'
-        })
-      }}>Loading todos failed</button>
+    <div>
+      <pre>{JSON.stringify(state.value)}</pre>
+      <pre>{JSON.stringify(state.context)}</pre>
     </div>
   )
 }
