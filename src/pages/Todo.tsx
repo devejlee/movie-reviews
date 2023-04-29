@@ -1,7 +1,7 @@
 import { useMachine } from '@xstate/react'
 import { todosMachine } from '../machines/todoAppMachine'
 
-const todos = new Set(['Take bins out', 'Do laundry'])
+const todos = new Set<string>([]);
 
 const Todo = () => {
   const [state, send] = useMachine(todosMachine, {
@@ -13,7 +13,6 @@ const Todo = () => {
         todos.add(context.createNewTodoFormInput)
       },
       deleteTodo: async (context, event) => {
-        throw new Error("uh oh")
         todos.delete(event.todo)
       }
     }

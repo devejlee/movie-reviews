@@ -33,7 +33,7 @@
           
         };
         eventsCausingGuards: {
-          
+          "Has todos": "done.invoke.Todo machine.Loading Todos:invocation[0]";
         };
         eventsCausingServices: {
           "deleteTodo": "Delete";
