@@ -18,7 +18,6 @@ const Todo = () => {
       }
     }
   })
-
   return (
     <div>
       <pre>{JSON.stringify(state.value)}</pre>
@@ -49,7 +48,17 @@ const Todo = () => {
             ))}
           </>
         )}
-        {state.matches('Todos Loaded') && <button onClick={() => { send({ type: 'Create new' }) }}>Click</button>}
+        {state.matches("Todos Loaded") && (
+          <button
+            onClick={() => {
+              send({
+                type: "Create new",
+              });
+            }}
+          >
+            Create new
+          </button>
+        )}
         {state.matches("Deleting todo errored") && (
           <>
             <p>Something went wrong: {state.context.errorMessage}</p>
@@ -64,17 +73,28 @@ const Todo = () => {
             </button>
           </>
         )}
-        {state.matches('Creating New Todo.Showing form input') &&
-          <form onSubmit={(e) => {
-            e.preventDefault()
-            send({ type: 'Submit' })
-          }}>
-            <input onChange={(e) => { send({ type: 'Form input changed', value: e.target.value }) }}></input>
+        {state.matches("Creating new todo.Showing form input") && (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              send({
+                type: "Submit",
+              });
+            }}
+          >
+            <input
+              onChange={(e) => {
+                send({
+                  type: "Form input changed",
+                  value: e.target.value,
+                });
+              }}
+            ></input>
           </form>
-        }
+        )}
       </div>
     </div>
-  )
+  );
 }
 
 export default Todo
