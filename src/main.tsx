@@ -4,11 +4,11 @@ import Home from './pages/Home'
 import Todo from './pages/Todo'
 import VideoPlayer from './pages/VideoPlayer'
 import './index.scss'
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom"
+import { HashRouter, Route, Routes, Link } from "react-router-dom"
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -21,6 +21,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/todo" element={<Todo />} />
         <Route path="/videoPlayer" element={<VideoPlayer />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
 )
