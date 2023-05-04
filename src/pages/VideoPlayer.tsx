@@ -3,28 +3,8 @@ import { useMachine } from '@xstate/react'
 import { videoPlayerMachine } from '../machines/videoPlayerMachine'
 
 const VideoPlayer = () => {
-  const videoElement = React.useRef<HTMLVideoElement>(null);
-  const [state, send] = useMachine(videoPlayerMachine, {
-    actions: {
-      playVideo: () => videoElement.current?.play(),
-      pauseVideo: () => videoElement.current?.pause(),
-      resetVideo: () => {
-        const video = videoElement.current;
-        if (video) {
-          video.pause();
-          video.currentTime = 0;
-          video.play();
-        }
-      },
-      stopVideo: () => {
-        const video = videoElement.current;
-        if (video) {
-          video.pause();
-          video.currentTime = videoElement.current.duration;
-        }
-      }
-    }
-  });
+  const videoElement = React.useRef<HTMLVideoElement | null>(null);
+  const [state, send] = useMachine(videoPlayerMachine.withContext({ videoElement }));
 
   const isPlaying = () => state.matches({ ready: "playing" });
   const isPaused = () => state.matches({ ready: "paused" });
@@ -43,7 +23,6 @@ const VideoPlayer = () => {
         <track kind="captions" />
       </video>
       <br />
-
       <button
         onClick={() => {
           send("PLAY");
@@ -52,15 +31,12 @@ const VideoPlayer = () => {
       >
         Play
       </button>
-
       <button onClick={() => send("PAUSE")} disabled={isPaused() || isStoped()}>
         Pause
       </button>
-
       <button onClick={() => send("RESET")} disabled={!isReady()}>
         Reset
       </button>
-
       <button onClick={() => send("END")} disabled={!isReady()}>
         Stop
       </button>
