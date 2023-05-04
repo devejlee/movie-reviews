@@ -9,7 +9,7 @@ const VideoPlayer = () => {
   const isPlaying = () => state.matches({ ready: "playing" });
   const isPaused = () => state.matches({ ready: "paused" });
   const isReady = () => state.matches("ready");
-  const isStoped = () => state.matches({ ready: "ended" });
+  const isStopped = () => state.matches({ ready: "ended" });
   console.log(state.value);
   return (
     <>
@@ -31,7 +31,7 @@ const VideoPlayer = () => {
       >
         Play
       </button>
-      <button onClick={() => send("PAUSE")} disabled={isPaused() || isStoped()}>
+      <button onClick={() => send("PAUSE")} disabled={isPaused() || isStopped()}>
         Pause
       </button>
       <button onClick={() => send("RESET")} disabled={!isReady()}>
